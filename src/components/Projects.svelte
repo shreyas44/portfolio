@@ -1,5 +1,5 @@
 <script lang="ts">
-import { crossfade, fly, slide } from "svelte/transition"
+  import { fly } from "svelte/transition"
   import ChevronLeft from "../icons/ChevronLeft.svelte"
   import ChevronRight from "../icons/ChevronRight.svelte"
   import { flip } from "svelte/animate"
@@ -17,9 +17,7 @@ import { crossfade, fly, slide } from "svelte/transition"
 
   export let projects: Project[]
   projects = projects.map((project, id) => ({...project, id}))
-
   let projectsToShow = projects
-
 
   $: getHandleClick = (direction: "forward" | "backward") => {
     if (direction == "forward") {
@@ -40,10 +38,10 @@ import { crossfade, fly, slide } from "svelte/transition"
       }
     }
   }
+  $: currentProjects = projectsToShow.slice(0,3)
 
   const getX = (direction: "left" | "right") => direction == "left" ? -300 : 300
-
-  $: currentProjects = projectsToShow.slice(0,3)
+  const duration = 400
 </script>
 
 <style>
@@ -78,14 +76,15 @@ import { crossfade, fly, slide } from "svelte/transition"
     </div>
     {#each currentProjects as project, i (project.name)}
       <div 
-        out:fly={{x: getX(i === 0 ? "left" : "right"), duration: 600}} 
-        in:fly={{x: getX(i === 0 ? "left" : "right"), duration: 600 }} 
-        animate:flip={{duration: 600}}
+        out:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
+        in:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
+        animate:flip={{duration}}
       >
         <Project 
           isMiddle={i === 1} 
           handleClick={i === 0 ? getHandleClick("backward") : i === 1 ? undefined : getHandleClick("forward")}
-          {project} 
+          {duration}
+          {project}
         />
       </div>
     {/each}

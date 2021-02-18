@@ -14,14 +14,14 @@
   }
 
   export let project: Project
-
   export let isMiddle: boolean
   export let handleClick
+  export let duration: number
 </script>
 
 <style>
   .project-container {
-    @apply rounded-xl bg-white shadow-xl transition-all duration-500;
+    @apply rounded-xl bg-white shadow-xl transition-all;
     @apply cursor-pointer hover:shadow-2xl box-border z-0;
     width: 20rem;
     height: 55vh;
@@ -48,10 +48,11 @@
 
 <div 
   class="project-container" 
-  class:middle-project={isMiddle} 
+  class:middle-project={isMiddle}
   on:click={handleClick}
+  style="transition-duration: {duration}"
 >
-  <Image src={project.image} alt={`${project.name}-image`} />
+  <Image src={project.image} alt="{project.name}-image" />
   <div class="project-contents-container">
 
     <div class="project-contents-text">
@@ -65,7 +66,9 @@
       {/if}
       
       {#if isMiddle}
-        <Tags tags={project.tags} /> 
+        <!-- <div transition:scale={{start: 0, duration, opacity: 0}}> -->
+          <Tags tags={project.tags} /> 
+        <!-- </div> -->
       {/if}
     </div>
 
