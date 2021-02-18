@@ -76,13 +76,13 @@
     </div>
     {#each currentProjects as project, i (project.name)}
       <div 
-        transition:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
+        in:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
+        out:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
         animate:flip={{duration}}
       >
         <Project 
           isMiddle={i === 1} 
           handleClick={i === 0 ? getHandleClick("backward") : i === 1 ? undefined : getHandleClick("forward")}
-          {duration}
           {project}
         />
       </div>
