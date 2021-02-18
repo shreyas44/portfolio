@@ -76,8 +76,7 @@
     </div>
     {#each currentProjects as project, i (project.name)}
       <div 
-        out:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
-        in:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
+        transition:fly={{x: getX(i === 0 ? "left" : "right"), duration }} 
         animate:flip={{duration}}
       >
         <Project 
