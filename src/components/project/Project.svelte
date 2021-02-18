@@ -3,6 +3,7 @@
   import Tags from "./Tags.svelte"
   import Repository from "./Repository.svelte"
   import Heading from "./Heading.svelte"
+  import { scale } from "svelte/transition";
 
   interface Project {
     name: string
@@ -66,9 +67,9 @@
       {/if}
       
       {#if isMiddle}
-        <!-- <div transition:scale={{start: 0, duration, opacity: 0}}> -->
+        <div transition:scale={{start: 0, duration, opacity: 0}}>
           <Tags tags={project.tags} /> 
-        <!-- </div> -->
+        </div>
       {/if}
     </div>
 
