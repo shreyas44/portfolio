@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Blogs from "../components/Blogs"
 import ContactSection from "../components/ContactSection"
 import Footer from "../components/Footer"
-import NavBar from "../components/NavBar"
+import NavBar from "../components/navbar/NavBar"
 import Projects from "../components/Projects"
 import ScrollSection from "../components/ScrollSection"
 import Type from "../components/Type"
@@ -33,7 +33,7 @@ const Home: React.FC<Props> = ({ projects, blogs }) => {
       </Head>
       <NavBar />
       <SectionsContainer className="h-screen overflow-y-scroll">
-        <ScrollSection>
+        <ScrollSection id="intro">
           <div className="flex items-center justify-center w-full h-full">
             <Type text={message} />
           </div>

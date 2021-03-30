@@ -31,7 +31,7 @@ const NavBar: React.FC = (props) => {
     const nodes = ids.map((id) => document.getElementById(id))
 
     const observerOptions: IntersectionObserverInit = {
-      threshold: 1,
+      threshold: 0.55,
     }
 
     const callback: IntersectionObserverCallback = (entries, observer) => {
@@ -44,7 +44,6 @@ const NavBar: React.FC = (props) => {
     }
 
     let observer = new IntersectionObserver(callback, observerOptions)
-
     nodes.map((node) => observer.observe(node))
   }, [])
 
