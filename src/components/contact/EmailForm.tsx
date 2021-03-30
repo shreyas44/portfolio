@@ -91,7 +91,7 @@ const EmailForm: React.FC = (props) => {
   }
 
   return (
-    <form className="flex flex-col w-full gap-y-3" onSubmit={handleSubmit}>
+    <form className="flex flex-col w-full gap-y-2" onSubmit={handleSubmit}>
       <FormInput
         placeholder="Full Name"
         value={name}
@@ -147,24 +147,28 @@ const FormInput: React.FC<FormInputProps> = (props) => {
       : "border-gray-300 focus:border-gray-900"
   }`
 
-  if (props.textarea)
-    return (
-      <textarea
-        placeholder={props.placeholder}
-        value={props.value}
-        onChange={props.onChage as ChangeEventHandler<HTMLTextAreaElement>}
-        className={`h-48 resize-none ${commonCss}`}
-      />
-    )
-
   return (
-    <input
-      type={props.type || "text"}
-      placeholder={props.placeholder}
-      value={props.value}
-      onChange={props.onChage as ChangeEventHandler<HTMLInputElement>}
-      className={commonCss}
-    />
+    <div className="flex flex-col gap-y-1">
+      {props.textarea ? (
+        <textarea
+          placeholder={props.placeholder}
+          value={props.value}
+          onChange={props.onChage as ChangeEventHandler<HTMLTextAreaElement>}
+          className={`h-48 resize-none ${commonCss}`}
+        />
+      ) : (
+        <input
+          type={props.type || "text"}
+          placeholder={props.placeholder}
+          value={props.value}
+          onChange={props.onChage as ChangeEventHandler<HTMLInputElement>}
+          className={commonCss}
+        />
+      )}
+      {props.error && (
+        <div className="text-xs text-red-600">{props.errorMessage}</div>
+      )}
+    </div>
   )
 }
 
