@@ -50,7 +50,7 @@ const Type: React.FC<Props> = (props) => {
       {renderedLines}
       <Span>
         {textToShow}
-        {showCursor && <Cursor className="inline-block h-8 bg-black" />}
+        {showCursor && <Cursor className="inline-block h-6 bg-black md:h-8" />}
       </Span>
     </div>
   )
@@ -61,7 +61,7 @@ const Cursor = styled.div`
 `
 
 const Span: React.FC = (props) => (
-  <span className="flex items-center text-2xl text-black">
+  <span className="flex items-center text-black sm:text-lg md:text-2xl">
     {props.children}
   </span>
 )

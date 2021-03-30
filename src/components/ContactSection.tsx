@@ -40,8 +40,8 @@ const ContactSection: React.FC = (props) => {
 
   return (
     <div className="flex items-center justify-center w-full h-full">
-      <div className="flex w-10/12">
-        <div className="flex flex-col items-end justify-center w-5/12 pr-5 border-r border-gray-300 border-solid gap-y-2">
+      <div className="flex flex-col-reverse justify-between w-11/12 -space-y-12 h-3/6 md:w-10/12 md:flex-row md:h-auto md:space-y-0">
+        <div className="flex items-center justify-center border-gray-300 border-solid md:border-t-0 gap-x-5 md:flex-col md:items-end md:w-5/12 md:pr-5 md:border-r md:gap-y-2">
           <SocialContact
             icon={<Twitter />}
             href="https://twitter.com/shreyas4_"
@@ -63,8 +63,11 @@ const ContactSection: React.FC = (props) => {
             text="Shreyas Sreenivas"
           />
         </div>
-        <div className="w-7/12 pl-5">
-          <form className="flex flex-col w-2/3 gap-y-3" onSubmit={handleSubmit}>
+        <div className=" md:w-7/12 md:pl-5">
+          <form
+            className="flex flex-col md:w-2/3 gap-y-3"
+            onSubmit={handleSubmit}
+          >
             <input
               type="text"
               placeholder="Full Name"
@@ -86,7 +89,7 @@ const ContactSection: React.FC = (props) => {
               className="w-full h-48 px-2 py-2 text-sm transition-all border border-gray-300 border-solid rounded-md outline-none resize-none focus:border-gray-900"
             />
             <button
-              className={`py-2 rounded-md cursor-pointer px-7 w-content transition duration-200 focus:outline-none ${
+              className={`py-2 text-center w-full rounded-md cursor-pointer px-7 md:w-content transition duration-200 focus:outline-none ${
                 isSubmitable
                   ? "bg-green-700 hover:bg-green-800 text-white cursor-pointer"
                   : "text-green-400 bg-green-100 cursor-not-allowed"
@@ -110,8 +113,8 @@ interface SocialContactProps {
 const SocialContact: React.FC<SocialContactProps> = (props) => (
   <a href={props.href}>
     <div className="flex items-center hover:underline gap-x-2">
-      <div className="text-gray-600">{props.text}</div>
-      <div className="w-5 h-5">{props.icon}</div>
+      <div className="hidden text-gray-600 md:block">{props.text}</div>
+      <div className="w-7 h-7 md:w-5 md:h-5">{props.icon}</div>
     </div>
   </a>
 )

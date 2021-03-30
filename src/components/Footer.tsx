@@ -17,7 +17,7 @@ const Footer: React.FC = (props) => {
 
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 flex items-center justify-center h-10 bg-gray-100 transition-all duration-200 ${
+      className={`fixed inset-x-0 bottom-0 flex items-center justify-center h-10 bg-gray-100 transition-all duration-200 ${
         !show ? "opacity-0 select-none" : "opacity-100"
       } `}
     >
