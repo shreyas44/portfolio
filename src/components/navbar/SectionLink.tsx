@@ -6,10 +6,6 @@ interface Props {
 }
 
 const StyledLink = styled.a<{ $isActive: boolean }>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   &::after {
     ${(props) => (props.$isActive ? "content: '';" : "")}
     position: absolute;
@@ -39,7 +35,9 @@ const SectionLink: React.FC<Props> = (props) => {
   return (
     <StyledLink
       href={props.href}
-      className={props.isActive ? "font-bold relative" : "hover:underline"}
+      className={`md:flex md:flex-col md:items-center before:hidden md:before:block ${
+        props.isActive ? "font-bold relative" : "hidden hover:underline"
+      }`}
       $isActive={props.isActive}
     >
       {props.children}

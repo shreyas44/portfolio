@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { useEffect, useState } from "react"
 import GitHub from "../../icons/github"
 import Medium from "../../icons/medium"
@@ -10,16 +9,6 @@ const IconContainer = (props) => (
     {props.children}
   </div>
 )
-
-const getRange = (min: number, max: number, difference: number) => {
-  const count = (max - min) / difference
-  const range = []
-  for (let i = min; i <= max; i += difference) {
-    range.push(i)
-  }
-
-  return range
-}
 
 const NavBar: React.FC = (props) => {
   const [currentActive, setCurrentActive] = useState<
@@ -54,6 +43,9 @@ const NavBar: React.FC = (props) => {
   return (
     <nav className="fixed top-0 left-0 right-0 flex items-center justify-between px-8 py-4 bg-white">
       <div className="flex items-center gap-x-3">
+        <SectionLink href="#intro" isActive={currentActive === "intro"}>
+          Intro
+        </SectionLink>
         <SectionLink href="#projects" isActive={currentActive === "projects"}>
           Projects
         </SectionLink>
@@ -63,9 +55,9 @@ const NavBar: React.FC = (props) => {
         <SectionLink href="#contact" isActive={currentActive === "contact"}>
           Contact
         </SectionLink>
-        <Link href="/resume">
-          <a className="hover:underline">Resume</a>
-        </Link>
+        {/* <SectionLink href="#resume" isActive={false}>
+          Resume
+        </SectionLink> */}
       </div>
       <div className="flex gap-x-3">
         <a href="https://twitter.com/shreyas4_">

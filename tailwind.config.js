@@ -15,7 +15,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      display: ["before", "after"],
+    },
   },
-  plugins: [],
+  plugins: [require("tailwind-pseudo-elements")],
 }
