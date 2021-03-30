@@ -2,7 +2,7 @@
 name: Potfolio
 description: My portfolio website.
 url: https://shreyas44.vercel.app/
-repository: https://github.com/shreyas44/portfolio
+repository: shreyas44/portfolio
 image: portfolio.png
 tags:
   - Svelte
