@@ -1,6 +1,6 @@
 ---
 name: Bedav
-short-description: Shows the availability of beds reserved for COVID patients in hospitals in multiple cities and districts across India.
+description: Shows the availability of beds reserved for COVID patients in hospitals in multiple cities and districts across India.
 url: https://bedav.org
 repository: https://github.com/shreyas44/bedav
 image: bedav.png

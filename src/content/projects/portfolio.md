@@ -1,6 +1,6 @@
 ---
 name: Potfolio
-short-description: My portfolio website.
+description: My portfolio website.
 url: https://shreyas44.vercel.app/
 repository: https://github.com/shreyas44/portfolio
 image: portfolio.png

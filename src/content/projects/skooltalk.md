@@ -1,6 +1,6 @@
 ---
 name: sKoolTalk
-short-description: A collaboration platform built for schools where communities can be created, students can interact directly with each other or teachers, assignments can be upploaded and submitted.
+description: A collaboration platform built for schools where communities can be created, students can interact directly with each other or teachers, assignments can be upploaded and submitted.
 is-deployed: false
 image: skooltalk.png
 tags:
