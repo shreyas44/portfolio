@@ -4,6 +4,7 @@ import GitHub from "../../icons/github"
 import Medium from "../../icons/medium"
 import Vonage from "../../icons/vonage"
 import { BlogData } from "../../lib/blogs"
+import { getFormattedTime } from "../../utils"
 import CardContainer from "./CardContainer"
 import Tag from "./Tag"
 
@@ -25,6 +26,8 @@ const PlatformContainer = styled.div`
 
 const BlogCard: React.FC<Props> = ({ blog }) => {
   const tags = blog.tags.map((tag) => <Tag key={tag} tag={tag} />)
+  const timestamp = getFormattedTime(blog.timestamp * 1000)
+
   return (
     <CardContainer className="overflow-hidden shadow-md cursor-pointer w-80 rounded-xl hover:shadow-xl">
       <div className="w-full h-1/2">
@@ -33,6 +36,7 @@ const BlogCard: React.FC<Props> = ({ blog }) => {
       <div className="flex flex-col justify-between p-3 h-1/2">
         <div className="space-y-1">
           <h3 className="text-2xl">{blog.title}</h3>
+          <div className="text-sm text-gray-400">{timestamp}</div>
           {/* <p>{blog.description}</p> */}
         </div>
         <div className="flex flex-col gap-y-1">

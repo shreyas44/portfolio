@@ -29,5 +29,7 @@ export const getBlogs = () => {
     return { id, ...matterResult.data } as BlogData
   })
 
+  blogsData.sort((a, b) => b.timestamp - a.timestamp)
+
   return blogsData
 }
