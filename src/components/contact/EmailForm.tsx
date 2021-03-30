@@ -1,5 +1,6 @@
 import { ChangeEventHandler, DOMAttributes, useState } from "react"
 import { validateBody, validateEmail, validateName } from "../../utils"
+import swal from "sweetalert"
 
 const EmailForm: React.FC = (props) => {
   const [name, setName] = useState("")
@@ -11,7 +12,6 @@ const EmailForm: React.FC = (props) => {
     body: false,
   })
   const [errors, setErrors] = useState({ name: null, email: null, body: null })
-  const [status, setStatus] = useState(null)
 
   const isSubmitable = !!(
     errors.name?.isValid &&
@@ -45,7 +45,11 @@ const EmailForm: React.FC = (props) => {
       return
     }
 
-    setStatus(true)
+    swal({
+      icon: "success",
+      title: "Your email has been sent!",
+      text: "I'll get back to you as soon as possible :)",
+    })
     setName("")
     setBody("")
     setEmail("")
