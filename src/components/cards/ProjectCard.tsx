@@ -12,7 +12,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
   const tags = project.tags.map((tag) => <Tag key={tag} tag={tag} />)
 
   return (
-    <CardContainer className="overflow-hidden shadow-md cursor-pointer w-80 rounded-xl hover:shadow-xl">
+    <CardContainer>
       <div className="w-full h-1/2">
         <img src={`/${project.image}`} className="object-cover w-full h-full" />
       </div>

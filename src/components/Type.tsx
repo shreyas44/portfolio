@@ -61,7 +61,7 @@ const Cursor = styled.div`
 `
 
 const Span: React.FC = (props) => (
-  <span className="flex items-center text-black sm:text-lg md:text-2xl">
+  <span className="flex items-center text-center text-black sm:text-lg md:text-2xl">
     {props.children}
   </span>
 )

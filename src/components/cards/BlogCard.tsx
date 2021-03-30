@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import GitHub from "../../icons/github"
 import Medium from "../../icons/medium"
 import Vonage from "../../icons/vonage"
 import { BlogData } from "../../lib/blogs"
@@ -17,7 +16,7 @@ const PlatformContainer = styled.div`
     content: "";
     height: 1px;
     position: absolute;
-    bottom: 3px;
+    bottom: 2px;
     left: 0;
     right: 0;
     background-color: black;
@@ -29,7 +28,7 @@ const BlogCard: React.FC<Props> = ({ blog }) => {
   const timestamp = getFormattedTime(blog.timestamp * 1000)
 
   return (
-    <CardContainer className="overflow-hidden shadow-md cursor-pointer w-80 rounded-xl hover:shadow-xl">
+    <CardContainer>
       <div className="w-full h-1/2">
         <img src={`/${blog.image}`} className="object-cover w-full h-full" />
       </div>

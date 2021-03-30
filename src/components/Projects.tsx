@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import { ProjectData } from "../lib/projects"
 import ProjectCard from "./cards/ProjectCard"
 
@@ -5,6 +6,9 @@ interface Props {
   projects: ProjectData[]
 }
 
+const ProjectsContainer = styled.div<{ $columns: number }>`
+  scroll-snap-type: x mandatory;
+`
 const Projects: React.FC<Props> = ({ projects }) => {
   const renderedProjects = projects.map((project) => (
     <ProjectCard key={project.id} project={project} />
@@ -12,11 +16,12 @@ const Projects: React.FC<Props> = ({ projects }) => {
 
   return (
     <div className="flex items-center justify-center w-full h-full overflow-visible">
-      <div className="w-10/12 px-5 py-10 m-auto overflow-x-scroll overflow-y-visible">
-        <div className="flex overflow-y-visible w-content gap-x-6">
-          {renderedProjects}
-        </div>
-      </div>
+      <ProjectsContainer
+        className="flex w-11/12 px-5 py-10 m-auto space-x-6 overflow-x-auto overflow-y-visible md:w-10/12"
+        $columns={4}
+      >
+        {renderedProjects}
+      </ProjectsContainer>
     </div>
   )
 }

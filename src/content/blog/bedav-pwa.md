@@ -6,7 +6,7 @@ image: bedav-pwa.png
 platform: medium
 tags:
   - PWA
-  - Apollo Client
+  - Apollo
   - GraphQL
   - Bedav
 timestamp: 1600065000

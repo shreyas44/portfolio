@@ -67,6 +67,27 @@ const tagColors = {
   rollup: {
     bg: "#ED4630",
   },
+  nodejs: {
+    bg: "#75B759",
+  },
+  aws: {
+    bg: "#F39831",
+  },
+  lambda: {
+    bg: "#F17B30",
+  },
+  dynamodb: {
+    bg: "#216EB4",
+  },
+  auth: {
+    bg: "#e41d1d",
+  },
+  relay: {
+    bg: "#EA692E",
+  },
+  pwa: {
+    bg: "#5E3EC8",
+  },
 }
 
 interface Props {
