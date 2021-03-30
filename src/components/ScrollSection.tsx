@@ -4,8 +4,14 @@ const StyledDiv = styled.div`
   scroll-snap-align: center;
 `
 
-const ScrollSection: React.FC = (props) => (
-  <StyledDiv className="w-full h-screen">{props.children}</StyledDiv>
+interface Props {
+  id?: string
+}
+
+const ScrollSection: React.FC<Props> = ({ children, id }) => (
+  <StyledDiv id={id} className="w-full h-screen">
+    {children}
+  </StyledDiv>
 )
 
 export default ScrollSection

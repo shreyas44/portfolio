@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import styled from "styled-components"
-import useDictState from "../hooks/useDictState"
 import useInterval from "../hooks/useInterval"
 
 interface Props {
