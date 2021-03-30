@@ -1,13 +1,23 @@
 import { ChangeEventHandler, DOMAttributes, useState } from "react"
+import { validateBody, validateEmail, validateName } from "../../utils"
 
 const EmailForm: React.FC = (props) => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [body, setBody] = useState("")
+  const [initials, setInitials] = useState({
+    name: false,
+    email: false,
+    body: false,
+  })
   const [errors, setErrors] = useState({ name: null, email: null, body: null })
   const [status, setStatus] = useState(null)
 
-  const isSubmitable = !!(name && email && body)
+  const isSubmitable = !!(
+    errors.name?.isValid &&
+    errors.email?.isValid &&
+    errors.body?.isValid
+  )
 
   const handleSubmit: DOMAttributes<HTMLFormElement>["onSubmit"] = async (
     event
@@ -30,8 +40,54 @@ const EmailForm: React.FC = (props) => {
     })
     const data = await sendEmail.json()
 
-    if (data.errors) setErrors(errors)
-    else setStatus(true)
+    if (data.errors) {
+      setErrors(errors)
+      return
+    }
+
+    setStatus(true)
+    setName("")
+    setBody("")
+    setEmail("")
+    setInitials({ name: false, email: false, body: false })
+  }
+
+  const getChangeHandler = (field: "name" | "email" | "body") => {
+    return (event) => {
+      let isValid: boolean, message: string
+      switch (field) {
+        case "name":
+          setName(event.target.value)
+          const nameVal = validateName(event.target.value)
+          isValid = nameVal.isValid
+          message = nameVal.message
+
+          break
+
+        case "email":
+          setEmail(event.target.value)
+          const emailVal = validateEmail(event.target.value)
+          isValid = emailVal.isValid
+          message = emailVal.message
+          break
+
+        case "body":
+          setBody(event.target.value)
+          const bodyVal = validateBody(event.target.value)
+          isValid = bodyVal.isValid
+          message = bodyVal.message
+          break
+      }
+
+      setErrors({
+        ...errors,
+        [field]: { isValid, message },
+      })
+      setInitials({
+        ...initials,
+        [field]: true,
+      })
+    }
   }
 
   return (
@@ -39,18 +95,24 @@ const EmailForm: React.FC = (props) => {
       <FormInput
         placeholder="Full Name"
         value={name}
-        onChage={(e) => setName(e.target.value)}
+        onChage={getChangeHandler("name")}
+        error={initials.name ? !errors?.name?.isValid : false}
+        errorMessage={errors?.name?.message}
       />
       <FormInput
         placeholder="Email Address"
         value={email}
-        onChage={(e) => setEmail(e.target.value)}
+        onChage={getChangeHandler("email")}
+        error={initials.email ? !errors?.email?.isValid : false}
+        errorMessage={errors?.email?.message}
       />
       <FormInput
         placeholder="What do you want to ask?"
         value={body}
-        onChage={(e) => setBody(e.target.value)}
+        onChage={getChangeHandler("body")}
         textarea={true}
+        error={initials.body ? !errors?.body?.isValid : false}
+        errorMessage={errors?.body?.message}
       />
 
       <button
@@ -79,8 +141,11 @@ interface FormInputProps {
 }
 
 const FormInput: React.FC<FormInputProps> = (props) => {
-  const commonCss =
-    "w-full p-2 text-sm transition-all border border-gray-300 border-solid rounded-md outline-none focus:border-gray-900"
+  const commonCss = `w-full p-2 text-sm transition-all border border-solid rounded-md outline-none ${
+    props.error
+      ? "border-red-300 focus:border-red-700"
+      : "border-gray-300 focus:border-gray-900"
+  }`
 
   if (props.textarea)
     return (
