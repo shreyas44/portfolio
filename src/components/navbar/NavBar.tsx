@@ -36,10 +36,6 @@ const NavBar: React.FC = (props) => {
     nodes.map((node) => observer.observe(node))
   }, [])
 
-  useEffect(() => {
-    console.log(currentActive)
-  }, [currentActive])
-
   return (
     <nav className="fixed top-0 left-0 right-0 flex items-center justify-between px-8 py-4 bg-white">
       <div className="flex items-center gap-x-3">
