@@ -16,6 +16,9 @@ module.exports = {
   },
   variants: {
     extend: {
+      borderStyle: ["hover"],
+      borderWidth: ["hover"],
+      borderColor: ["hover"],
       display: ["before", "after"],
     },
   },
