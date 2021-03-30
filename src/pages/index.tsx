@@ -23,6 +23,22 @@ Have a Wonderful Day :)`
 
 const SectionsContainer = styled.div`
   scroll-snap-type: y mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: black white;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 100%;
+    border-radius: 3px;
+    background-color: black;
+  }
 `
 
 const Home: React.FC<Props> = ({ projects, blogs }) => {
