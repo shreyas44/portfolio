@@ -11,11 +11,17 @@ function MyApp({ Component, pageProps }) {
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-1TN9K1TRXW"
         ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {"{dataLayer.push(arguments);}"}
-          gtag('js', new Date()); gtag('config', 'G-1TN9K1TRXW');
-        </script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || []; 
+              function gtag() {
+                dataLayer.push(arguments);
+              }
+              gtag('js', new Date()); 
+              gtag('config', 'G-1TN9K1TRXW');`,
+          }}
+        />
       </Head>
       <Component {...pageProps} />
     </>
