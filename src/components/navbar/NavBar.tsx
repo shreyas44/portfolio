@@ -66,7 +66,7 @@ const NavBar: React.FC = (props) => {
             <GitHub />
           </IconContainer>
         </a>
-        <a href="https://shreyas-sreenivas.medium.com">
+        <a href="https://shreyas44.medium.com">
           <IconContainer>
             <Medium />
           </IconContainer>
